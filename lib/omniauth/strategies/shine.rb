@@ -8,7 +8,7 @@ module OmniAuth
       option :client_options, {
         :site => 'https://api.misfitwearables.com',
         :authorize_url => '/auth/dialog/authorize',
-        :token_url => '/auth/tokens/exchange'
+        :token_url => '/auth/tokens/exchange',
       }
 
       # provider does not really ignore state, but am getting
@@ -16,16 +16,16 @@ module OmniAuth
       # option :provider_ignores_state, true
 
 
-      uid { raw_info['userId'] }
-      info do {
-        name: raw_info['name'],
-        birthday: raw_info['birthday'],
-        gender: raw_info['gender'],
-        avatar: raw_info['avatar'],
-        email: raw_info['email'],
-      } end
-
-      extra do { extra_info: 'test' } end
+      # uid { raw_info['userId'] }
+      # info do {
+      #   name: raw_info['name'],
+      #   birthday: raw_info['birthday'],
+      #   gender: raw_info['gender'],
+      #   avatar: raw_info['avatar'],
+      #   email: raw_info['email'],
+      # } end
+      #
+      # extra do { extra_info: 'test' } end
 
       def request_phase
         options[:authorize_params] = client_params.merge(options[:authorize_params])
@@ -36,10 +36,9 @@ module OmniAuth
         OmniAuth::Utils.deep_merge(super, client_params.merge({:grant_type => 'authorization_code'}))
       end
 
-      def raw_info
-        # @raw_info ||= access_token.get('https://api.misfitwearables.com/move/v1/user/me/profile').parsed
-        @raw_info
-      end
+      # def raw_info
+      #   @raw_info ||= access_token.get('https://api.misfitwearables.com/move/v1/user/me/profile').parsed
+      # end
 
       private
 
