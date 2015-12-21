@@ -16,15 +16,16 @@ module OmniAuth
       # option :provider_ignores_state, true
 
       uid {
-        user_info['userId']
+        byebug
+        raw_info['userId']
       }
 
       info do
         {
-          :email => user_info['email'],
-          :avatar => user_info['avatar'],
-          :birthday => user_info['birthday'],
-          :gender => user_info['gender']
+          :email => raw_info['email'],
+          :avatar => raw_info['avatar'],
+          :birthday => raw_info['birthday'],
+          :gender => raw_info['gender']
         }
       end
 
