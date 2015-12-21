@@ -16,7 +16,6 @@ module OmniAuth
       # option :provider_ignores_state, true
 
       uid {
-        byebug
         raw_info['userId']
       }
 
@@ -45,7 +44,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('https://api.misfitwearables.com/move/v1/user/me/profile').parsed
+        @raw_info ||= access_token.get('/move/resource/v1/user/me/profile').parsed
       end
 
       private
