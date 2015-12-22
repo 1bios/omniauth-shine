@@ -21,6 +21,7 @@ module OmniAuth
 
       info do
         {
+          :name => raw_info['name'],
           :email => raw_info['email'],
           :avatar => raw_info['avatar'],
           :birthday => raw_info['birthday'],
