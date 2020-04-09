@@ -48,7 +48,12 @@ module OmniAuth
         @raw_info ||= access_token.get('/move/resource/v1/user/me/profile').parsed
       end
 
+      def callback_url
+        full_host + script_name + callback_path
+      end
+
       private
+
       def client_params
         {:client_id => options[:client_id], :redirect_uri => callback_url ,:response_type => 'code', :scope => DEFAULT_SCOPE}
       end
